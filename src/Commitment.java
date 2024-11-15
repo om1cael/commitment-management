@@ -15,8 +15,8 @@ public class Commitment {
         return Period.between(this.commitmentDateTime.toLocalDate(), LocalDate.now());
     }
 
-    public LocalDateTime addHours(int hours) {
-        return this.commitmentDateTime.plusHours(hours);
+    public void addHours(int hours) {
+        this.commitmentDateTime = this.commitmentDateTime.plusHours(hours);
     }
 
     public void showCommitment() {
