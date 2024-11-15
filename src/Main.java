@@ -10,8 +10,8 @@ public class Main {
         System.out.println(commitment.remainingTime());
         System.out.println(commitment2.remainingTime());
 
-        commitment.addHours(5);
-        commitment2.addHours(10);
+        commitment = commitment.addHours(5);
+        commitment2 = commitment2.addHours(10);
 
         commitment.showCommitment();
         System.out.println();

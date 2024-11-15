@@ -1,22 +1,12 @@
 import java.time.*;
 
-public class Commitment {
-    String commitmentName;
-    LocalDateTime commitmentDateTime;
-    ZoneId commitmentTimeZone;
-
-    public Commitment(String name, LocalDateTime dateTime, ZoneId timeZone) {
-        this.commitmentName = name;
-        this.commitmentDateTime = dateTime;
-        this.commitmentTimeZone = timeZone;
-    }
-
+public record Commitment(String commitmentName, LocalDateTime commitmentDateTime, ZoneId commitmentTimeZone) {
     public Period remainingTime() {
-        return Period.between(this.commitmentDateTime.toLocalDate(), LocalDate.now());
+        return Period.between(LocalDate.now(), this.commitmentDateTime.toLocalDate());
     }
 
-    public void addHours(int hours) {
-        this.commitmentDateTime = this.commitmentDateTime.plusHours(hours);
+    public Commitment addHours(int hours) {
+         return new Commitment(this.commitmentName, this.commitmentDateTime.plusHours(hours), this.commitmentTimeZone);
     }
 
     public void showCommitment() {
